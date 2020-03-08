@@ -1,5 +1,5 @@
 ## Profesor: Andrés Rubio del Río
-## Alumno:
+## Alumno: Jesús Garcimartín Berbel
 
 Desde el IES Al-Ándalus nos acaban de comentar que por favor añadamos persistencia a los datos introducidos, ya que tal y como está ahora la aplicación no es funcional. Por tanto, en este spring añadiremos persistencia a los datos utilizando para ello ficheros de objetos.
 
