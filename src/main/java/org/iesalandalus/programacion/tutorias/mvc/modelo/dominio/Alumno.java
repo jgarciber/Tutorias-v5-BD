@@ -157,8 +157,13 @@ public class Alumno implements Serializable {
 	}
 	
 	
+	public static void actualizaUltimoIdentificador(Alumno alumno) {
+		String ultimoExpediente = alumno.getExpediente();
+		int ultNumExpediente = Integer.parseInt(ultimoExpediente.substring(ultimoExpediente.indexOf("_", 4)+1,ultimoExpediente.length()));
+		ultimoIdentificador = ultNumExpediente;
+	}
 	
-	
+
 	
 	
 }

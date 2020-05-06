@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import org.iesalandalus.programacion.utilidades.javafx.campotextovalidado.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="372.0" prefWidth="698.0" stylesheets="@../estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.tutorias.mvc.vista.iugpestanas.controladoresvistas.ControladorAnadirCitaAlumno">
+   <children>
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="631.0" text="SESIONES" />
+      <TableView fx:id="tvSesiones" prefHeight="236.0" prefWidth="764.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="tcSFecha" prefWidth="75.0" text="Fecha" />
+            <TableColumn fx:id="tcSHoraInicio" prefWidth="75.0" text="Hora Inicio" />
+            <TableColumn fx:id="tcSHoraFin" prefWidth="75.0" text="Hora Fin" />
+            <TableColumn fx:id="tcSDuracion" prefWidth="107.0" text="Minutos Duración" />
+            <TableColumn fx:id="tcSTutoria" prefWidth="75.0" text="Tutoría" />
+            <TableColumn fx:id="tcSProfesor" prefWidth="75.0" text="Profesor" />
+         </columns>
+      </TableView>
+      <GridPane hgap="10.0" prefHeight="58.0" prefWidth="631.0" vgap="10.0">
+         <children>
+            <Label text="Hora:" GridPane.halignment="CENTER" />
+            <TextField fx:id="tfHora" prefHeight="34.0" prefWidth="436.0" GridPane.columnIndex="1" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="97.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="199.0" />
+         </columnConstraints>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <rowConstraints>
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="51.0" prefWidth="326.0" spacing="20.0">
+         <children>
+            <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+            <Button fx:id="btAnadir" mnemonicParsing="false" onAction="#anadirCitaAlumno" text="Añadir" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+   <padding>
+      <Insets left="10.0" right="10.0" />
+   </padding>
+</VBox>

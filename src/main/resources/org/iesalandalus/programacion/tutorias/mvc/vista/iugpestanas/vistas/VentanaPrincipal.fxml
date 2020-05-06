@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="620.0" stylesheets="@../estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.tutorias.mvc.vista.iugpestanas.controladoresvistas.ControladorVentanaPrincipal">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ayuda">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#acercaDe" text="Acerca de" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane prefHeight="581.0" prefWidth="620.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Profesores">
+               <content>
+                  <VBox prefHeight="527.0" prefWidth="620.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="620.0" text="Profesores" textAlignment="CENTER">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TableView fx:id="tvProfesores" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="tcNombreProfesor" prefWidth="75.0" text="Nombre" />
+                            <TableColumn fx:id="tcDniProfesor" prefWidth="75.0" text="DNI" />
+                              <TableColumn fx:id="tcCorreoProfesor" prefWidth="75.0" text="Correo" />
+                          </columns>
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#anadirProfesor" text="Añadir Profesor" />
+                                    <MenuItem mnemonicParsing="false" onAction="#borrarProfesor" text="Borrar Profesor" />
+                                    <MenuItem mnemonicParsing="false" onAction="#buscarProfesor" text="Buscar Profesor" />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem mnemonicParsing="false" onAction="#anadirTutoria" text="Añadir Tutoría" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="672.0" text="Tutorías del Profesor">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin></Label>
+                        <TableView fx:id="tvTutoriasProfesor" prefHeight="200.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="tcTPNombre" prefWidth="75.0" text="Nombre" />
+                           </columns>
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#borrarTutoria" text="Borrar Tutoría" />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem mnemonicParsing="false" onAction="#anadirSesion" text="Añadir Sesión" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="728.0" text="Sesiones de la tutoría">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin></Label>
+                        <TableView fx:id="tvSesionesTutoria" prefHeight="200.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="tcSTFecha" prefWidth="75.0" text="Fecha" />
+                              <TableColumn fx:id="tcSTHoraInicio" prefWidth="75.0" text="Hora Inicio" />
+                              <TableColumn fx:id="tcSTHoraFin" prefWidth="75.0" text="Hora Fin" />
+                              <TableColumn fx:id="tcSTDuracion" prefWidth="107.0" text="Duración" />
+                           </columns>
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#borrarSesion" text="Borrar Sesión" />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem mnemonicParsing="false" onAction="#anadirCitaSesion" text="Añadir Cita" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="711.0" text="Citas de la sesión">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin></Label>
+                        <TableView fx:id="tvCitasSesion" prefHeight="200.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="tcCSHoraCita" prefWidth="75.0" text="Hora" />
+                              <TableColumn fx:id="tcCSNombreAlumno" prefWidth="75.0" text="Nombre Alumno" />
+                           </columns>
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#borrarCitaSesion" text="Borrar Cita" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/reserva.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Tab>
+          <Tab text="Alumnos">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="704.0" text="Alumnos">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TableView fx:id="tvAlumnos" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="tcNombreAlumno" prefWidth="206.0" text="Nombre" />
+                            <TableColumn fx:id="tcCorreoAlumno" prefWidth="206.0" text="Correo" />
+                              <TableColumn fx:id="tcExpedienteAlumno" prefWidth="206.0" text="Expediente" />
+                          </columns>
+                           <contextMenu>
+                              <ContextMenu>
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#anadirAlumno" text="Añadir Alumno" />
+                                    <MenuItem mnemonicParsing="false" onAction="#borrarAlumno" text="Borrar Alumno" />
+                                    <MenuItem mnemonicParsing="false" onAction="#buscarAlumno" text="Buscar Alumno" />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem mnemonicParsing="false" onAction="#anadirCitaAlumno" text="Añadir Cita" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label alignment="CENTER" prefHeight="21.0" prefWidth="712.0" text="Citas del Alumno">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </VBox.margin></Label>
+                        <TableView fx:id="tvCitasAlumno" prefHeight="200.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="tcCADiaCita" prefWidth="155.0" text="Día" />
+                              <TableColumn fx:id="tcCAHoraInicio" prefWidth="154.0" text="Hora Inicio" />
+                              <TableColumn fx:id="tcCAMinutosDuracion" prefWidth="75.0" text="Minutos Duración" />
+                              <TableColumn fx:id="tcCATutoria" prefWidth="155.0" text="Tutoría" />
+                              <TableColumn fx:id="tcCAProfesor" prefWidth="154.0" text="Profesor" />
+                           </columns>
+                           <contextMenu>
+                              <ContextMenu>
+                                 <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#borrarCitaAlumno" text="Borrar Cita" />
+                                 </items>
+                              </ContextMenu>
+                           </contextMenu>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/aula.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</VBox>

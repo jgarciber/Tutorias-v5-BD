@@ -47,11 +47,18 @@ public void comenzar() {
 				//hay que crear un nuevo alumno antes de añadirlo a la lista para que se introduzca correctamente el identificador del expediente
 				//de lo contrario no lleva la cuenta correcta del expediente.
 				coleccionAlumnos.add(new Alumno(alumno));			 
-			}while (alumno != null);
+			}while (alumno != null);		
 															
 			dataIS.close(); //cierra flujo de entrada
 		}catch (EOFException eo) {
 			System.out.println("Fichero leido correctamente.");
+			
+			//Una vez realizada la lectura de los datos es necesario actualizar el int ultimoIdentificador de la clase Alumno
+			//para que cuando se inserte un nuevo alumno, los números de identificación sigan incrementandose en vez de empezar
+			//otra vez por el 0.
+			Alumno ultimoAlumno = new Alumno(alumno);
+			Alumno.actualizaUltimoIdentificador(ultimoAlumno);
+			
 			eo.getMessage();
 		}catch (FileNotFoundException ex) {
 			System.out.println("Fichero alumnos no encontrado");
@@ -64,6 +71,10 @@ public void comenzar() {
 			e.getMessage();
 		} 
 	}
+
+/**
+ * @param alumno
+ */
 	
 	public void terminar() {
 		

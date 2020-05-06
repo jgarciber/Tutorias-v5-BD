@@ -14,11 +14,11 @@ public class Sesion implements Serializable{
 	public static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	public static final DateTimeFormatter FORMATO_HORA = DateTimeFormatter.ofPattern("HH:mm");
 	
+	private Tutoria tutoria;
 	private LocalDate fecha;
 	private LocalTime horaInicio ;
 	private LocalTime horaFin;
 	private int minutosDuracion;
-	private Tutoria tutoria;
 	
 	public Sesion (Tutoria tutoria, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin, int minutosDuracion) {
 		setTutoria(tutoria);
