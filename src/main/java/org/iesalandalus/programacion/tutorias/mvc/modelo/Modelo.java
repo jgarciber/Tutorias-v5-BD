@@ -13,6 +13,9 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IFuenteDatos;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.IProfesores;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ISesiones;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.ITutorias;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Modelo implements IModelo {
@@ -109,7 +112,25 @@ public class Modelo implements IModelo {
 		}
 		if(buscar(cita.getSesion())==null) {
 			throw new OperationNotSupportedException("ERROR: No existe la sesión de esta cita.");
-
+		}
+		LocalDate manana= LocalDate.now().plusDays(1);
+		
+		/* esta comprobación se ha añadido para asegurarse de que al insertar una cita, la sesión sea en el futuro y no esté caducada.
+		esta situación se produce ya que los datos almacenados en archivos o en bases de datos pueden ser antiguos y para evitar problemas
+		con la lectura de los datos se debe permitir crear sesiones con fechas anteriores a la actual, pero no crear una cita con una sesión
+		de fecha desactualizada. Aquí se realiza esa comprobación para evita citas con fechas anteriores a la actual.
+		*/
+		if (cita.getSesion().getFecha().isBefore(manana)) {
+			throw new IllegalArgumentException("ERROR: Está sesión ya ha caducado, no es posible concretar la cita.");
+		}
+		
+		//añado esta comprobación para evitar que un alumno concrete una cita que otro alumno ya ha realizado en esa sesión y hora.
+		List<Cita> coleccionCitas = new ArrayList<>();
+		coleccionCitas = getCitas(cita.getSesion());
+		for (Cita citaColeccion : coleccionCitas) {
+			if (citaColeccion.getHora()==cita.getHora()) {
+				throw new OperationNotSupportedException("ERROR: Ya existe un alumno con una cita para esa sesión y hora.");
+			}
 		}
 		//Creo una nueva cita con el resultado de la busqueda del alumno que devolverá un alumno si existe con todos sus datos, el resultado de la búsqueda de la sesión que devolverá una sesión si existe con todos sus datos, ademaás de la hora de la cita
 

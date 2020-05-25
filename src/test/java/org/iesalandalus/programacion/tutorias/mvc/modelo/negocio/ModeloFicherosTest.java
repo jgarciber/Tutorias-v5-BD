@@ -13,7 +13,7 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
-import org.iesalandalus.programacion.tutorias.mvc.modelo.FactoriaFuenteDatos;
+import org.iesalandalus.programacion.tutorias.mvc.modelo.negocio.FactoriaFuenteDatos;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.IModelo;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.Modelo;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Alumno;

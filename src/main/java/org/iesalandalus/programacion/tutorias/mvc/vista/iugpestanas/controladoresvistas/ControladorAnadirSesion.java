@@ -11,7 +11,6 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
 import org.iesalandalus.programacion.tutorias.mvc.vista.iugpestanas.utilidades.Dialogos;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -26,7 +25,6 @@ public class ControladorAnadirSesion implements Initializable {
 	private static final String FORMATO_HORA = "\\d{1,2}:\\d{2}";
 	
 	private IControlador controladorMVC;
-	private ObservableList<Sesion> sesionesTutoria;
 	private Tutoria tutoria;
 	
     @FXML private DatePicker dpFecha;
@@ -53,7 +51,6 @@ public class ControladorAnadirSesion implements Initializable {
 		try {
 			sesion = getSesion();
 			controladorMVC.insertar(sesion);
-			sesionesTutoria.setAll(controladorMVC.getSesiones());
 			Stage propietario = ((Stage) btAnadir.getScene().getWindow());
 			Dialogos.mostrarDialogoInformacion("Añadir Sesión", "Sesión añadida satisfactoriamente", propietario);
 		} catch (Exception e) {
@@ -68,8 +65,7 @@ public class ControladorAnadirSesion implements Initializable {
 	
 	//Este método se separa del método initialize para que una vez creada la ventana, ya no sea necesario crearla más veces
 	//tan solo con llamar al método inicializa se reinician los campos sin crear un nuevo escenario, escena, etc
-    public void inicializa(ObservableList<Sesion> sesionesTutoria, Tutoria tutoria) {
-    	this.sesionesTutoria = sesionesTutoria;
+    public void inicializa(Tutoria tutoria) {
     	this.tutoria = tutoria;
     	tfHoraInicio.setText("");
     	compruebaCampoTexto(FORMATO_HORA, tfHoraInicio);

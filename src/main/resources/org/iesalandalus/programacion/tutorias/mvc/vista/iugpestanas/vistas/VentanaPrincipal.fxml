@@ -20,6 +20,11 @@
               <MenuItem mnemonicParsing="false" onAction="#acercaDe" text="Acerca de" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Sincronización">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#refrescar" text="Refrescar" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
       <TabPane prefHeight="581.0" prefWidth="620.0" tabClosingPolicy="UNAVAILABLE">

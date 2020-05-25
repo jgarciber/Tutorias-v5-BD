@@ -30,6 +30,13 @@ public class Alumno implements Serializable {
 		expediente=alumno.getExpediente();
 	}
 	
+	public Alumno(String nombre, String correo, Integer expediente) {
+		setNombre(nombre);
+		setCorreo(correo);
+		setExpediente(expediente);
+	}
+
+
 	public static Alumno getAlumnoFicticio(String correo) {
 		return new Alumno("Alumno Ficticio", correo);
 	}
@@ -106,6 +113,13 @@ public class Alumno implements Serializable {
 	private void setExpediente() {
 		incrementaUltimoIdentificador();
 		this.expediente = PREFIJO_EXPEDIENTE+getIniciales()+"_"+(ultimoIdentificador);
+	}
+
+	private void setExpediente(Integer expediente) {
+		if (expediente == null) {
+			throw new NullPointerException("ERROR: El expediente no puede ser nulo.");
+		}
+		this.expediente = PREFIJO_EXPEDIENTE+getIniciales()+"_"+(expediente);
 	}
 	
 	private static void incrementaUltimoIdentificador() {

@@ -30,6 +30,18 @@ public class Sesion implements Serializable{
 		//al comprobar la validez de la sesion en el último paso, si el método anterior no devuelve ninguna excepción se asume que la sesión es válida y por tanto se crea el objeto.
 	}
 	
+	public Sesion (Tutoria tutoria, LocalDate fecha, LocalTime horaInicio, LocalTime horaFin, int minutosDuracion, boolean comprobarSesion) {
+		setTutoria(tutoria);
+		setFecha(fecha);
+		setHoraInicio(horaInicio);
+		setHoraFin(horaFin);
+		setMinutosDuracion(minutosDuracion);
+		if (comprobarSesion == true) {
+			comprobarValidezSesion();
+		}
+		//al comprobar la validez de la sesion en el último paso, si el método anterior no devuelve ninguna excepción se asume que la sesión es válida y por tanto se crea el objeto.
+	}
+	
 	public Sesion (Sesion sesion) {
 		if (sesion == null) {
 			throw new NullPointerException("ERROR: No es posible copiar una sesión nula.");

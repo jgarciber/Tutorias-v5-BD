@@ -8,7 +8,6 @@ import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Tutoria;
 import org.iesalandalus.programacion.tutorias.mvc.vista.iugpestanas.utilidades.Dialogos;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,7 +19,6 @@ class ControladorAnadirTutoria implements Initializable{
 	private static final String ER_NOMBRE ="[a-zA-ZáéíóúüÁÉÍÓÓÜ]+";
 
 	private IControlador controladorMVC;
-	private ObservableList<Tutoria> tutoriasProfesor;
 	private Profesor profesor;
 	
 	@FXML private TextField tfNombreTutoria;
@@ -43,9 +41,8 @@ class ControladorAnadirTutoria implements Initializable{
 		try {
 			tutoria = getTutoria();
 			controladorMVC.insertar(tutoria);
-			tutoriasProfesor.setAll(controladorMVC.getTutorias());
 			Stage propietario = ((Stage) btAnadir.getScene().getWindow());
-			Dialogos.mostrarDialogoInformacion("Añadir Sesión", "Sesión añadida satisfactoriamente", propietario);
+			Dialogos.mostrarDialogoInformacion("Añadir Tutoría", "Tutoría añadida satisfactoriamente", propietario);
 		} catch (Exception e) {
 			Dialogos.mostrarDialogoError("Añadir Sesión", e.getMessage());
 		}	
@@ -58,8 +55,7 @@ class ControladorAnadirTutoria implements Initializable{
 	
 	//Este método se separa del método initialize para que una vez creada la ventana, ya no sea necesario crearla más veces
 	//tan solo con llamar al método inicializa se reinician los campos sin crear un nuevo escenario, escena, etc
-    public void inicializa(ObservableList<Tutoria> tutoriasProfesor, Profesor profesor) {
-    	this.tutoriasProfesor = tutoriasProfesor;
+    public void inicializa(Profesor profesor) {
     	this.profesor = profesor;
     	tfNombreTutoria.setText("");
     	compruebaCampoTexto(ER_NOMBRE, tfNombreTutoria);

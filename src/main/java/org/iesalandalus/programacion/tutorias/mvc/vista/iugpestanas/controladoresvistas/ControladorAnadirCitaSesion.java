@@ -24,7 +24,6 @@ public class ControladorAnadirCitaSesion implements Initializable {
 	private static final DateTimeFormatter FORMATEA_HORA = DateTimeFormatter.ofPattern("HH:mm");
 	
 	private IControlador controladorMVC;
-	private ObservableList<Cita> citasSesion;
 	private ObservableList<Alumno> alumnos;
 	private Sesion sesion;
 
@@ -51,7 +50,6 @@ public class ControladorAnadirCitaSesion implements Initializable {
 		try {
 			cita = getCita();
 			controladorMVC.insertar(cita);
-			citasSesion.setAll(controladorMVC.getCitas());
 			Stage propietario = ((Stage) btAnadir.getScene().getWindow());
 			Dialogos.mostrarDialogoInformacion("Añadir Cita", "Cita añadida satisfactoriamente", propietario);
 		} catch (Exception e) {
@@ -67,8 +65,7 @@ public class ControladorAnadirCitaSesion implements Initializable {
 	//Este método se separa del método initialize para que una vez creada la ventana, ya no sea necesario crearla más veces
 	//tan solo con llamar al método inicializa se reinician los campos sin crear un nuevo escenario, escena, etc
 	//Este método también recibe los ObservableList y los datos que va a manejar la ventana, asociando los datos pasados.
-    public void inicializa(ObservableList<Cita> citasSesion, ObservableList<Alumno> alumnos, Sesion sesion) {
-		this.citasSesion = citasSesion;
+    public void inicializa(ObservableList<Alumno> alumnos, Sesion sesion) {
 		this.alumnos = alumnos;
     	this.sesion = sesion;
 		lvAlumnos.setItems(alumnos);

@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import org.iesalandalus.programacion.tutorias.mvc.controlador.IControlador;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Alumno;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Cita;
-import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.tutorias.mvc.modelo.dominio.Sesion;
 import org.iesalandalus.programacion.tutorias.mvc.vista.iugpestanas.utilidades.Dialogos;
 
@@ -17,7 +16,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -31,7 +29,7 @@ public class ControladorAnadirCitaAlumno implements Initializable{
 	private static final DateTimeFormatter FORMATEA_HORA = DateTimeFormatter.ofPattern("HH:mm");
 	
 	private IControlador controladorMVC;
-	private ObservableList<Cita> citasAlumno;
+	private ObservableList<Sesion> sesiones;
 	private Alumno alumno;
 
     @FXML private TableView<Sesion> tvSesiones;
@@ -68,7 +66,6 @@ public class ControladorAnadirCitaAlumno implements Initializable{
 		try {
 			cita = getCita();
 			controladorMVC.insertar(cita);
-			citasAlumno.setAll(controladorMVC.getCitas());
 			Stage propietario = ((Stage) btAnadir.getScene().getWindow());
 			Dialogos.mostrarDialogoInformacion("Añadir Cita", "Cita añadida satisfactoriamente", propietario);
 		} catch (Exception e) {
@@ -83,8 +80,8 @@ public class ControladorAnadirCitaAlumno implements Initializable{
 	
 	//Este método se separa del método initialize para que una vez creada la ventana, ya no sea necesario crearla más veces
 	//tan solo con llamar al método inicializa se reinician los campos sin crear un nuevo escenario, escena, etc
-    public void inicializa(ObservableList<Sesion> sesiones, ObservableList<Cita> citasAlumno, Alumno alumno) {
-		this.citasAlumno = citasAlumno;
+    public void inicializa(ObservableList<Sesion> sesiones, Alumno alumno) {
+		this.sesiones = sesiones;
     	this.alumno = alumno;
     	tfHora.setText("");
     	compruebaCampoTexto(FORMATO_HORA, tfHora);
